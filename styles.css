@@ -58,7 +58,6 @@ a {
   margin: 0 auto;
   padding: 1rem 1.25rem;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
@@ -74,6 +73,19 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+}
+
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: transparent;
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .nav-links a {
@@ -558,6 +570,51 @@ a {
 @media (max-width: 640px) {
   .footer-inner {
     padding: 0.9rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links {
+    width: 100%;
+    order: 3;
+    flex-direction: column;
+    gap: 0.25rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: max-height 0.28s ease, opacity 0.22s ease, transform 0.22s ease;
+    pointer-events: none;
+  }
+
+  .nav-links.is-open {
+    max-height: 320px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 0.9rem 0.25rem;
+    border-radius: 10px;
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    left: 0;
+    right: 0;
   }
 }
 

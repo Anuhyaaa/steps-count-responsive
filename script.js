@@ -2,6 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   setActiveNavLink();
+  initMobileNavMenu();
   initHomePersonalization();
   initBMIForm();
   initStepTracker();
@@ -13,6 +14,47 @@ function setActiveNavLink() {
   document.querySelectorAll(".nav-links a").forEach((link) => {
     if (link.dataset.page === currentPage) {
       link.classList.add("active");
+    }
+  });
+}
+
+function initMobileNavMenu() {
+  const toggleButton = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (!toggleButton || !navLinks) {
+    return;
+  }
+
+  const closeMenu = () => {
+    navLinks.classList.remove("is-open");
+    toggleButton.setAttribute("aria-expanded", "false");
+  };
+
+  const openMenu = () => {
+    navLinks.classList.add("is-open");
+    toggleButton.setAttribute("aria-expanded", "true");
+  };
+
+  // On mobile, the button toggles the vertical menu open and closed.
+  toggleButton.addEventListener("click", () => {
+    if (navLinks.classList.contains("is-open")) {
+      closeMenu();
+      return;
+    }
+
+    openMenu();
+  });
+
+  // Clicking a menu item should close the menu so the page feels tidy on mobile.
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Reset the mobile state when the layout grows back to desktop width.
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      closeMenu();
     }
   });
 }
