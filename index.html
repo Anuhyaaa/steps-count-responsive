@@ -13,10 +13,10 @@
       <a class="brand" href="index.html">FitStep</a>
       <div class="nav-links">
         <a href="index.html" data-page="home">Home</a>
-        <a href="about.html" data-page="about">About</a>
         <a href="step-tracker.html" data-page="tracker">Step Tracker</a>
         <a href="bmi.html" data-page="bmi">BMI Calculator</a>
         <a href="nutrition.html" data-page="nutrition">Nutrition</a>
+        <a href="about.html" data-page="about">About</a>
       </div>
     </nav>
   </header>
@@ -27,6 +27,21 @@
       <div class="hero-content">
         <h1>Track Your Fitness Journey</h1>
         <p>Build healthier habits with a clean, responsive fitness site for step tracking, BMI checks, and nutrition guidance.</p>
+        <div class="name-card" id="nameCard">
+          <div id="namePrompt" class="name-state">
+            <label for="userName">Enter your name</label>
+            <div class="name-row">
+              <input id="userName" type="text" placeholder="Your name">
+              <button id="saveNameButton" class="btn btn-primary" type="button">Save</button>
+            </div>
+            <p class="name-help">We will remember your name on this device.</p>
+          </div>
+
+          <div id="welcomeState" class="name-state" hidden>
+            <p class="welcome-text">Welcome, <span id="displayName"></span> 👋</p>
+            <button id="changeNameButton" class="btn btn-secondary" type="button">Change Name</button>
+          </div>
+        </div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="step-tracker.html">Start Tracking</a>
         </div>
@@ -41,18 +56,18 @@
 
     <!-- Quick feature highlights -->
     <section class="section section-block panel">
-      <h2 class="section-title">What you can do</h2>
+      <h2 class="section-title">Featured Tools</h2>
       <div class="feature-grid">
         <article class="feature-card feature-item">
-          <h3>Track Steps</h3>
+          <h3>Step Tracking</h3>
           <p>Use motion data from your device to estimate walking steps and calories burned.</p>
         </article>
         <article class="feature-card feature-item">
-          <h3>Check BMI</h3>
+          <h3>BMI Calculator</h3>
           <p>Enter your height and weight to see your BMI value and healthy category.</p>
         </article>
         <article class="feature-card feature-item">
-          <h3>Learn About Fitness</h3>
+          <h3>Nutrition Guide</h3>
           <p>Read simple benefits of exercise, nutrition, and staying active every day.</p>
         </article>
       </div>

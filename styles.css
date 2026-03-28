@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/* Base theme and layout tokens */
+/* Base theme and layout tokens for a modern card-based layout */
 :root {
-  --black: #000000;
-  --black-soft: #1f1f1f;
-  --beige: #f5f5dc;
-  --beige-soft: #fbf8ef;
-  --card: #fffdf8;
+  --black: #111111;
+  --black-soft: #2a2a2a;
+  --beige: #f5f0e6;
+  --beige-soft: #fbf8f2;
+  --card: #ffffff;
   --text: #2f241d;
   --muted: #6b5b52;
   --accent: #6e6254;
   --border: rgba(0, 0, 0, 0.08);
-  --shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  --shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -26,7 +26,7 @@ body {
   margin: 0;
   font-family: "Poppins", Arial, sans-serif;
   color: var(--text);
-  background: linear-gradient(180deg, var(--beige-soft), #fff 42%, #f8f5ea 100%);
+  background: linear-gradient(180deg, var(--beige-soft), #fff 50%, #f7f2e7 100%);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -49,7 +49,6 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .navbar {
@@ -78,7 +77,7 @@ a {
 .nav-links a {
   padding: 0.7rem 1rem;
   border-radius: 999px;
-  transition: transform 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.25s ease, color 0.25s ease, opacity 0.25s ease;
   position: relative;
 }
 
@@ -104,22 +103,22 @@ a {
 .page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1.25rem;
+  padding: 1.25rem 1rem 2.75rem;
   width: 100%;
   flex: 1 0 auto;
 }
 
-/* Hero section */
+/* Hero section uses the same card language as the rest of the site */
 .hero {
-  background: var(--beige);
-  border-radius: 28px;
+  background: var(--card);
   padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
   box-shadow: var(--shadow);
   display: grid;
   gap: 1.25rem;
   grid-template-columns: 1fr;
   align-items: center;
-  border: 1px solid var(--border);
 }
 
 .hero-content h1,
@@ -138,6 +137,60 @@ a {
   color: var(--muted);
 }
 
+.name-card {
+  margin-top: 1.25rem;
+  padding: 1.1rem;
+  border-radius: 12px;
+  background: #faf7f0;
+  border: 1px solid var(--border);
+}
+
+.name-state {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.name-state label {
+  font-weight: 700;
+}
+
+.name-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.name-row input {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+  font: inherit;
+  background: #fff;
+}
+
+.name-row input:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.18);
+  border-color: var(--black);
+}
+
+.name-help,
+.welcome-text {
+  margin: 0;
+}
+
+.welcome-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--black);
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -154,7 +207,7 @@ a {
   border: 2px solid transparent;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .btn-primary {
@@ -163,8 +216,7 @@ a {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
 }
 
 .hero-visual {
@@ -179,9 +231,8 @@ a {
 .hero-image {
   position: relative;
   overflow: hidden;
-  border-radius: 26px;
+  border-radius: 12px;
   min-height: 300px;
-  box-shadow: var(--shadow);
 }
 
 .hero-image img {
@@ -196,12 +247,11 @@ a {
   bottom: 1rem;
   padding: 0.8rem 1rem;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.92);
   font-weight: 600;
 }
 
-/* Shared grids and cards */
+/* Shared grids and card blocks */
 .stats-grid,
 .feature-grid,
 .card-grid,
@@ -211,26 +261,29 @@ a {
 }
 
 .feature-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .feature-card {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 1.2rem;
+  border-radius: 12px;
+  padding: 1.5rem;
   box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .stat-card,
-.card {
+.card,
+.panel,
+.page-summary,
+.note-card,
+.result-box {
   background: var(--card);
-}
-
-.nutrition-section,
-.panel {
-  background: var(--beige);
   border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .page-intro {
@@ -241,10 +294,7 @@ a {
 }
 
 .page-summary {
-  background: linear-gradient(180deg, rgba(245, 245, 220, 0.92), rgba(255, 255, 255, 0.98));
-  border-radius: 22px;
-  padding: 1rem;
-  border: 1px solid var(--border);
+  padding: 1.25rem;
 }
 
 .page-summary h2,
@@ -259,10 +309,7 @@ a {
 }
 
 .note-card {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 18px;
-  padding: 0.95rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1rem;
 }
 
 .note-card strong {
@@ -278,20 +325,17 @@ a {
 .stat-card,
 .card,
 .panel {
-  border-radius: 22px;
-  padding: 1.2rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding: 1.5rem;
 }
 
 .stat-card:hover,
 .card:hover,
 .panel:hover,
+.feature-card:hover,
 .note-card:hover,
-.feature-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 34px rgba(27, 94, 32, 0.14);
+.result-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
 }
 
 .stat-card strong {
@@ -301,7 +345,7 @@ a {
 }
 
 .section {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .section-title {
@@ -310,15 +354,12 @@ a {
 
 .feature-grid,
 .card-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .feature-item {
-  padding: 1rem;
-  border-left: 4px solid var(--accent);
-  background: rgba(255, 255, 255, 0.82);
-  border-radius: 18px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: grid;
+  gap: 0.55rem;
 }
 
 .feature-item h3,
@@ -328,7 +369,7 @@ a {
 }
 
 .section-block {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .section-header {
@@ -345,34 +386,28 @@ a {
 .nutrition-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .nutrition-card {
   overflow: hidden;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.nutrition-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.14);
-}
-
-/* Nutrition image styling keeps every card image the same size and crop */
+/* Nutrition images keep a consistent crop without using framed cards */
 .nutrition-card img {
   width: 100%;
   height: 190px;
   object-fit: cover;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-radius: 0;
 }
 
 .nutrition-card-content {
-  padding: 1rem 1rem 1.1rem;
+  padding: 1rem 1rem 1.15rem;
 }
 
 .nutrition-card-content h3 {
@@ -412,9 +447,7 @@ a {
 
 .result-box {
   margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 18px;
-  background: rgba(0, 0, 0, 0.04);
+  padding: 1.25rem;
 }
 
 /* Step progress */
@@ -473,7 +506,7 @@ a {
   height: 190px;
   width: 100%;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 12px;
   margin-bottom: 0.9rem;
 }
 
@@ -507,12 +540,12 @@ a {
 
 @media (min-width: 768px) {
   .page {
-    padding: 2rem;
+    padding: 2rem 1.5rem 3rem;
   }
 
   .hero {
-    grid-template-columns: 1.1fr 0.9fr;
-    padding: 2.5rem;
+    grid-template-columns: 1.05fr 0.95fr;
+    padding: 2rem;
   }
 
   .hero-visual {
@@ -542,15 +575,23 @@ a {
   }
 
   .page {
-    padding: 2.5rem;
+    padding: 2.5rem 2rem 3.5rem;
   }
 
-  .hero-image {
-    min-height: 420px;
+  .feature-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .nutrition-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .hero-image {
+    min-height: 420px;
   }
 
   .footer-inner {

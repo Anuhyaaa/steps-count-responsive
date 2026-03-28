@@ -2,6 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   setActiveNavLink();
+  initHomePersonalization();
   initBMIForm();
   initStepTracker();
 });
@@ -13,6 +14,71 @@ function setActiveNavLink() {
       link.classList.add("active");
     }
   });
+}
+
+function initHomePersonalization() {
+  if (document.body.dataset.page !== "home") {
+    return;
+  }
+
+  const storageKey = "fitstepUserName";
+  const namePrompt = document.getElementById("namePrompt");
+  const welcomeState = document.getElementById("welcomeState");
+  const userNameInput = document.getElementById("userName");
+  const saveNameButton = document.getElementById("saveNameButton");
+  const changeNameButton = document.getElementById("changeNameButton");
+  const displayName = document.getElementById("displayName");
+
+  if (!namePrompt || !welcomeState || !userNameInput || !saveNameButton || !changeNameButton || !displayName) {
+    return;
+  }
+
+  // Show either the input form or the saved greeting based on localStorage.
+  const renderNameState = () => {
+    const savedName = localStorage.getItem(storageKey);
+
+    if (savedName) {
+      displayName.textContent = savedName;
+      namePrompt.hidden = true;
+      welcomeState.hidden = false;
+      return;
+    }
+
+    userNameInput.value = "";
+    namePrompt.hidden = false;
+    welcomeState.hidden = true;
+    userNameInput.focus();
+  };
+
+  // Save the user's name so it is available after reloads.
+  const saveName = () => {
+    const enteredName = userNameInput.value.trim();
+
+    if (!enteredName) {
+      userNameInput.focus();
+      return;
+    }
+
+    localStorage.setItem(storageKey, enteredName);
+    renderNameState();
+  };
+
+  // Remove the saved name so the input field appears again.
+  const clearName = () => {
+    localStorage.removeItem(storageKey);
+    renderNameState();
+  };
+
+  saveNameButton.addEventListener("click", saveName);
+  changeNameButton.addEventListener("click", clearName);
+
+  userNameInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      saveName();
+    }
+  });
+
+  renderNameState();
 }
 
 function initBMIForm() {
