@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHomePersonalization();
   initBMIForm();
   initStepTracker();
+  initNutritionImages();
 });
 
 function setActiveNavLink() {
@@ -234,4 +235,38 @@ function initStepTracker() {
   } else {
     statusText.textContent = "Mobile devices may ask for motion permission.";
   }
+}
+
+function initNutritionImages() {
+  const nutritionImages = document.querySelectorAll(".nutrition-card img");
+  if (!nutritionImages.length) {
+    return;
+  }
+
+  // Hide broken or unavailable images so the card stays clean and aligned.
+  const hideBrokenImage = (image) => {
+    const card = image.closest(".nutrition-card");
+    image.hidden = true;
+    image.removeAttribute("src");
+    image.classList.add("is-hidden-image");
+    if (card) {
+      card.classList.add("no-image");
+    }
+  };
+
+  nutritionImages.forEach((image) => {
+    if (!image.getAttribute("src")) {
+      hideBrokenImage(image);
+      return;
+    }
+
+    if (image.complete && image.naturalWidth === 0) {
+      hideBrokenImage(image);
+      return;
+    }
+
+    image.addEventListener("error", () => {
+      hideBrokenImage(image);
+    });
+  });
 }
