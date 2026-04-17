@@ -1,0 +1,57 @@
+HOW TO GENERATE YOUR POWERPOINT PRESENTATION
+=============================================
+
+STEP 1: Install python-pptx library
+------------------------------------
+Run this command in your terminal:
+
+pip install python-pptx
+
+OR if you have Python 3:
+
+pip3 install python-pptx
+
+
+STEP 2: Run the Python script
+------------------------------
+Run this command:
+
+python create_presentation.py
+
+OR if you have Python 3:
+
+python3 create_presentation.py
+
+
+STEP 3: Open the generated file
+--------------------------------
+A file named "FitStep_Presentation.pptx" will be created in the same folder.
+Open it with Microsoft PowerPoint, Google Slides, or any compatible software.
+
+
+WHAT'S INCLUDED:
+----------------
+✓ 12 slides total
+✓ Title slide with FitStep branding
+✓ Content slides with bullet points
+✓ Speaker notes on every slide
+✓ Clean, professional design
+✓ Ready for classroom presentation
+
+
+TROUBLESHOOTING:
+----------------
+If you get "pip not found":
+- Make sure Python is installed
+- Try: python -m pip install python-pptx
+
+If you get "python not found":
+- Install Python from python.org
+- Make sure to check "Add to PATH" during installation
+
+If the file doesn't open:
+- Make sure you have PowerPoint or compatible software
+- Try opening with Google Slides (upload to Google Drive)
+
+
+That's it! Your presentation is ready! 🎉
